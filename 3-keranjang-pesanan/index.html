@@ -3,21 +3,40 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pesan Online</title>
+    <title>Altul Store - Toko Alat Tulis Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="atas">
         <div class="wadah">
-            <!-- TODO: ganti dengan nama toko/warung -->
-            <a href="#" class="merek">Nama Toko</a>
+            <a href="#" class="merek">✏️ Altul Store</a>
             <span>Keranjang: <strong id="jumlah-item">0</strong> item</span>
         </div>
     </header>
 
+    <!-- Banner Slogan Islami -->
+    <section class="banner-motivasi">
+        <div class="wadah">
+            <h2 class="kalimat-arab">إِنَّ مَعَ الْعُسْرِ يُسْرًا</h2>
+            <p class="kalimat-arti">"Inna ma'al usri yusro" — <em>Sesungguhnya bersama kesulitan ada kemudahan.</em></p>
+        </div>
+    </section>
+
     <main class="wadah tata">
         <section>
-            <h2>Menu</h2>
+            <h2>Katalog Alat Tulis</h2>
+
+            <!-- Fitur Pencarian & Filter Kategori -->
+            <div class="area-filter">
+                <input type="text" id="input-cari" placeholder="🔍 Cari pulpen, buku, pensil, binder...">
+                <div class="grup-kategori">
+                    <button type="button" class="btn-kategori active" data-kategori="semua">Semua Produk</button>
+                    <button type="button" class="btn-kategori" data-kategori="tulis">Alat Tulis</button>
+                    <button type="button" class="btn-kategori" data-kategori="kertas">Buku & Kertas</button>
+                    <button type="button" class="btn-kategori" data-kategori="kantor">Perlengkapan Kantor</button>
+                </div>
+            </div>
+
             <!-- Kartu menu diisi oleh script.js -->
             <div id="daftar-menu" class="grid"></div>
         </section>
@@ -28,12 +47,45 @@
             <ul id="isi-keranjang"></ul>
             <p id="keranjang-kosong" class="redup">Keranjang masih kosong.</p>
             <p class="total">Total: <strong id="total">Rp0</strong></p>
-            <button id="tombol-pesan" disabled>Pesan</button>
+
+            <!-- Form Pemesanan -->
+            <form id="form-pemesan" class="form-pemesanan">
+                <div class="field-input">
+                    <label for="nama-pemesan">Nama Pembeli:</label>
+                    <input type="text" id="nama-pemesan" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="field-input">
+                    <label for="metode-bayar">Metode Pembayaran:</label>
+                    <select id="metode-bayar">
+                        <option value="Tunai / Kasir">Tunai / Kasir</option>
+                        <option value="QRIS / E-Wallet">QRIS / E-Wallet</option>
+                        <option value="Transfer Bank">Transfer Bank</option>
+                    </select>
+                </div>
+                <div class="field-input">
+                    <label for="catatan">Catatan Tambahan:</label>
+                    <textarea id="catatan" placeholder="Contoh: Titip di meja piket" rows="2"></textarea>
+                </div>
+
+                <button id="tombol-pesan" disabled>Pesan Sekarang</button>
+            </form>
         </aside>
     </main>
 
+    <!-- Modal Popup Ringkasan Struk -->
+    <div id="modal-sukses" class="modal-overlay">
+        <div class="modal-konten">
+            <div class="header-modal">
+                <h3>📋 Pesanan Altul Store Diterima!</h3>
+                <p>Terima kasih telah berbelanja kebutuhan alat tulis Anda.</p>
+            </div>
+            <div id="detail-pesanan-ringkasan" class="body-modal"></div>
+            <button type="button" id="tutup-modal" class="btn-tutup">Tutup Struk</button>
+        </div>
+    </div>
+
     <footer class="bawah">
-        <div class="wadah">Mini Hackathon Teknologi Web · Nama Kelompok</div>
+        <div class="wadah">Hackathon Teknologi Web · Kelompok Inna ma'al-'usri yusrā</div>
     </footer>
 
     <script src="script.js"></script>
